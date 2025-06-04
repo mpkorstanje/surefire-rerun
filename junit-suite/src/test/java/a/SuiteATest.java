@@ -6,7 +6,7 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @IncludeEngines("junit-jupiter")
-@SelectClasses(BaseSteps.class)
+@SelectClasses(Template.class)
 public class SuiteATest {
 
 }
