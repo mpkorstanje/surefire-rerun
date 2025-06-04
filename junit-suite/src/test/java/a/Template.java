@@ -14,7 +14,7 @@ class Template {
     void test(){
         int i = counter.getAndIncrement();
         System.out.println("Value " + i);
-        if (i < 1) {
+        if (i % 2 == 0) {
             Assertions.fail();
         }
     }    
