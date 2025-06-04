@@ -1,4 +1,4 @@
-package io.cucumber.skeleton.b;
+package a;
 
 import io.cucumber.java.en.Given;
 import org.assertj.core.api.Assertions;
@@ -11,12 +11,13 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 
 @Suite
 @IncludeEngines("cucumber")
-@SelectPackages("io.cucumber.skeleton")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "io.cucumber.skeleton.b")
-public class RunCucumberBTest {
+@SelectPackages("a")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "a")
+public class RunCucumberATest {
 
     @Given("I have {int} cukes in my belly")
     public void I_have_cukes_in_my_belly(int cukes) {
-        // Always pass
+        // Always fail
+        Assertions.fail();
     }
 }
