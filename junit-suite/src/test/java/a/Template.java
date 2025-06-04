@@ -2,20 +2,33 @@ package a;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.Extension;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.platform.engine.UniqueId;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
+@ExtendWith(Template.MyTestExtension.class)
 class Template {
 
-    private static final AtomicInteger counter = new AtomicInteger();
+    private static String id;
     
     @Test
     void test(){
-        int i = counter.getAndIncrement();
-        System.out.println("Value " + i);
-        if (i % 2 == 0) {
+        System.out.println(id);
+        if (id.contains("SuiteBTest")) {
             Assertions.fail();
         }
-    }    
+    }
+    
+    public static class MyTestExtension implements BeforeEachCallback {
+
+        @Override
+        public void beforeEach(ExtensionContext context) throws Exception {
+            id = context.getUniqueId();
+        }
+    }
 }
